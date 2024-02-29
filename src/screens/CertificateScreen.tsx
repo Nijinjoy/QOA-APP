@@ -1,16 +1,46 @@
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import React from 'react'
 import HeaderComponent from '../components/HeaderComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 import colors from '../constants/Colors'
 import { useNavigation } from '@react-navigation/native'
-import { backarrow } from '../assets/images'
+import { backarrow, filter, programs } from '../assets/images'
 import SearchComponent from '../components/SearchComponent'
+import CommonComponent from '../components/CommonComponent'
 
 const CertificateScreen = () => {
     const navigation = useNavigation()
+    console.log("hu777==>", HEIGHT * 0.22);
+
+    const data = [
+        {
+            id: '1',
+            imageUrl: programs,
+            category: 'Organising and Managing Asian Games',
+            title: 'Organising and Managing Asian Games',
+            date: '2-6 Jan, 2022',
+            language: 'ENGLISH',
+        },
+        {
+            id: '2',
+            imageUrl: programs,
+            category: 'Online',
+            title: 'Organising and Managing Asian Games',
+            date: '2-6 Jan, 2022',
+            language: 'ENGLISH',
+        },
+        {
+            id: '3',
+            imageUrl: programs,
+            category: 'Online',
+            title: 'Organising and Managing Asian Games',
+            date: '2-6 Jan, 2022',
+            language: 'ENGLISH',
+        },
+    ];
+
     return (
-        <View>
+        <View style={{ backgroundColor: colors.lightgrey, flex: 1 }}>
             <HeaderComponent
                 title="Certificates"
                 headerStyle={{ height: HEIGHT * 0.17 }}
@@ -18,7 +48,31 @@ const CertificateScreen = () => {
                 onPress={() => navigation.goBack()}
                 icon={backarrow} />
             <SearchComponent
-                containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.13, borderRadius: WIDTH * 0.02, backgroundColor: colors.purewhite, borderColor: colors.grey }} tintColor={colors.black} placeholderTextColor={colors.lightgrey} />
+                containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.13, borderRadius: WIDTH * 0.02, backgroundColor: colors.purewhite, borderColor: colors.grey }} tintColor={colors.black} placeholderTextColor={colors.lightgrey}
+                filterBackground={colors.darkred}
+                filterLogo={filter}
+            />
+            <View style={{ marginTop: 40, marginHorizontal: WIDTH * 0.05 }}>
+                <FlatList
+                    data={data}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{ paddingBottom: 90 }}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => {
+                        return (
+                            <View style={{ marginTop: HEIGHT * 0.03 }}>
+                                <CommonComponent
+                                    imageUrl={item.imageUrl}
+                                    category={item.category}
+                                    title={item.title}
+                                    date={item.date}
+                                    language={item.language}
+                                />
+                            </View>
+                        )
+                    }}
+                />
+            </View>
         </View>
     )
 }

@@ -23,5 +23,8 @@ import arrowintersection from '../images/arrowintersection/arrowintersection.png
 import bookshelf from '../images/bookshelf/bookshelf.png'
 import dotintersection from '../images/dotintersection/dotintersection.png'
 import olympics from '../images/olympics/olympics.png'
+import hands from '../images/hands/hands.png'
+import translation from '../images/translation/translation.png'
+import filter from '../images/filter/filter.png'
 
-export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics }
+export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter }
