@@ -26,5 +26,9 @@ import olympics from '../images/olympics/olympics.png'
 import hands from '../images/hands/hands.png'
 import translation from '../images/translation/translation.png'
 import filter from '../images/filter/filter.png'
+import phone from '../images/phone/phone.png'
+import mobile from '../images/mobile/mobile.png'
+import location from '../images/location/location.png'
+import email from '../images/email/email.png'
 
-export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter }
+export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter, phone, mobile, location, email }

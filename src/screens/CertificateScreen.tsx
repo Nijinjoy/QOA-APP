@@ -16,7 +16,7 @@ const CertificateScreen = () => {
         {
             id: '1',
             imageUrl: programs,
-            category: 'Organising and Managing Asian Games',
+            category: 'In publishing and graphic design Lorem ipsum is a placeholder',
             title: 'Organising and Managing Asian Games',
             date: '2-6 Jan, 2022',
             language: 'ENGLISH',
@@ -24,7 +24,7 @@ const CertificateScreen = () => {
         {
             id: '2',
             imageUrl: programs,
-            category: 'Online',
+            category: 'In publishing and graphic design Lorem ipsum is a placeholder',
             title: 'Organising and Managing Asian Games',
             date: '2-6 Jan, 2022',
             language: 'ENGLISH',
@@ -32,7 +32,7 @@ const CertificateScreen = () => {
         {
             id: '3',
             imageUrl: programs,
-            category: 'Online',
+            category: 'In publishing and graphic design Lorem ipsum is a placeholder',
             title: 'Organising and Managing Asian Games',
             date: '2-6 Jan, 2022',
             language: 'ENGLISH',

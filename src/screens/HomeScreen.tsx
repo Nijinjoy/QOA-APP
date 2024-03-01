@@ -26,6 +26,7 @@ const contentFlatlist = [
         label: "Latest News",
         backgroundColor: colors.red,
         backgroundImage: news,
+        path: "LatestNewsScreen"
     },
     {
         id: 4,
@@ -45,7 +46,9 @@ const HomeScreen = () => {
                     onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                     iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} />
                 <SearchComponent
-                    containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.12, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite} />
+                    containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.12, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite}
+                    placeholderTextColor={colors.white}
+                />
             </View>
             <View>
                 <FlatList

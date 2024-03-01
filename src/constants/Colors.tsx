@@ -11,7 +11,9 @@ const colors = {
     lightgrey: "#E8E8E8",
     shadowcolor: "#000000",
     darkred: "#F83D64",
-    screenbackgrounnd: "#FAFAFA"
+    screenbackgrounnd: "#FAFAFA",
+    placeholdercolor: '#E1E1E1'
+
 }
 
 export default colors;

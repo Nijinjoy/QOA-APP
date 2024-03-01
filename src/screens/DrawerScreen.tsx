@@ -1,9 +1,9 @@
-import { View, Text, FlatList, Pressable, Image } from 'react-native'
-import React, { useState } from 'react'
-import { arabic, downArrow, drawerlogo, upArrow } from '../assets/images'
-import colors from '../constants/Colors'
-import { HEIGHT, WIDTH } from '../constants/Dimension'
-import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react';
+import { View, Text, FlatList, Pressable, Image } from 'react-native';
+import { arabic, downArrow, drawerlogo, upArrow } from '../assets/images';
+import colors from '../constants/Colors';
+import { HEIGHT, WIDTH } from '../constants/Dimension';
+import { useNavigation } from '@react-navigation/native';
 
 const drawerFlatlist = [
     // {
@@ -56,17 +56,18 @@ const drawerFlatlist = [
     // },
     {
         id: 6,
-        label: "Contact Us"
+        label: "Contact Us",
+        path: 'ContactUsScreen'
     },
     {
         id: 7,
         label: "Help",
         path: 'HelpScreen'
     }
-]
+];
 
 const DrawerScreen = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const [expanded, setExpanded] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState('English');
 
@@ -84,12 +85,14 @@ const DrawerScreen = () => {
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => {
                         return (
-                            <Pressable onPress={() => navigation.navigate(item.path)}>
+                            <>
                                 <Pressable
                                     style={{ marginTop: HEIGHT * 0.03, flexDirection: 'row', alignItems: "center" }}
                                     onPress={() => {
                                         if (item.label === 'About Us') {
                                             setExpanded(!expanded);
+                                        } else if (item.path) {
+                                            navigation.navigate(item.path);
                                         }
                                     }}
                                 >
@@ -107,7 +110,7 @@ const DrawerScreen = () => {
                                         ))}
                                     </View>
                                 )}
-                            </Pressable>
+                            </>
                         );
                     }}
                 />
@@ -142,7 +145,7 @@ const DrawerScreen = () => {
                 </View>
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default DrawerScreen
+export default DrawerScreen;
