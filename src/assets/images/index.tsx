@@ -14,7 +14,6 @@ import downArrow from '../images/downArrow/downArrow.png'
 import drawerlogo from '../images/drawerlogo/drawerlogo.png'
 import arabic from '../images/arabic/arabic.png'
 import programs from '../images/programs/programs.png'
-
 import nextarrow from '../images/nextarrow/nextarrow.png'
 import diploma from '../images/diploma/diploma.png'
 import certificates from '../images/certificates/certificates.png'
@@ -30,5 +29,14 @@ import phone from '../images/phone/phone.png'
 import mobile from '../images/mobile/mobile.png'
 import location from '../images/location/location.png'
 import email from '../images/email/email.png'
+//impetor
+import plus from '../images/plus/Vector.png'
+import profile from '../images/profile/profile.png'
+import home from '../images/home/home.png'
+import cart from '../images/cart/cart.png'
+import profilee from '../images/profilee/profile.png'
+import love from '../images/love/love.png'
+import homefocussed from '../images/homefocussed/homefocussed.png'
 
-export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter, phone, mobile, location, email }
+
+export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter, phone, mobile, location, email, plus, profile, cart, home, profilee, love, homefocussed }

@@ -12,7 +12,8 @@ const contentFlatlist = [
         id: 1,
         label: "This Month's Programs",
         backgroundColor: colors.yellow,
-        backgroundImage: month
+        backgroundImage: month,
+        path: 'MonthPrgmScreen'
     },
     {
         id: 2,
@@ -32,7 +33,8 @@ const contentFlatlist = [
         id: 4,
         label: "Media",
         backgroundColor: colors.green,
-        backgroundImage: media
+        backgroundImage: media,
+        path: "MediaScreen"
     }
 ]
 

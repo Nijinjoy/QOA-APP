@@ -16,6 +16,10 @@ import DiplomaScreen from '../screens/DiplomaScreen';
 import LatestNewsScreen from '../screens/LatestNewsScreen';
 import NewsDetailScreen from '../screens/NewsDetailScreen';
 import ContactUsScreen from '../screens/ContactUsScreen';
+import MediaScreen from '../screens/MediaScreen';
+import MediaDetailScreen from '../screens/MediaDetailScreen';
+import MonthPrgmScreen from '../screens/MonthPrgmScreen';
+import BottomScreen from '../screens/BottomScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -51,12 +55,16 @@ const Routes = () => {
                 <Stack.Screen name='LatestNewsScreen' component={LatestNewsScreen} />
                 <Stack.Screen name='NewsDetailScreen' component={NewsDetailScreen} />
                 <Stack.Screen name='ContactUsScreen' component={ContactUsScreen} />
+                <Stack.Screen name='MediaScreen' component={MediaScreen} />
+                <Stack.Screen name='MediaDetailScreen' component={MediaDetailScreen} />
+                <Stack.Screen name='MonthPrgmScreen' component={MonthPrgmScreen} />
+                <Stack.Screen name='BottomScreen' component={BottomScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
-
+// BottomScreen
 
 export default Routes

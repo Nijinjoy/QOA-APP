@@ -29,7 +29,7 @@ const SplashScreen = () => {
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', top: HEIGHT * 0.22 }}>
                 <Text style={{ color: colors.grey }}>Version 1.0</Text>
-                <Text style={{ fontSize: 14, marginTop: HEIGHT * 0.015 }}>Qatar Olympic Academy</Text>
+                <Text style={{ fontSize: 14, marginTop: HEIGHT * 0.015, color: colors.blacks }}>Qatar Olympic Academy</Text>
             </View>
             <View style={{ position: 'absolute', bottom: 0, flexDirection: 'row' }}>
                 {coloredViews.map((view, index) => (

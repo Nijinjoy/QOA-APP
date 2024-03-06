@@ -9,6 +9,7 @@ import TextInputComponent from '../components/TextInputComponent'
 import ButtonComponent from '../components/ButtonComponent'
 import StripComponent from '../components/StripComponent'
 
+
 const contactFlatlist = [
     {
         id: 1,

@@ -11,7 +11,7 @@ const HeaderComponent = (props) => {
     } } = props;
     return (
         <ImageBackground source={headerintersection} style={{ backgroundColor: colors.skyblue, /* height: HEIGHT * 0.19, */ borderBottomWidth: 4, borderColor: colors.grey, ...headerStyle }}>
-            <SafeAreaView style={{ flexDirection: 'row', marginHorizontal: WIDTH * 0.02, marginTop: HEIGHT * 0.05, borderWidth: 0 }}>
+            <SafeAreaView style={{ flexDirection: 'row', marginHorizontal: WIDTH * 0.02, marginTop: HEIGHT * 0.04, borderWidth: 0 }}>
                 <Pressable style={{ padding: 8, borderRadius: WIDTH * 0.02, ...containerStyle }} onPress={onPress}>
                     <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
                         <Image source={icon} style={{ ...iconStyle }} resizeMode='contain' />

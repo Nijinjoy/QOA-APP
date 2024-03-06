@@ -5,16 +5,27 @@ import { HEIGHT, WIDTH } from '../constants/Dimension'
 import colors from '../constants/Colors'
 import { useNavigation } from '@react-navigation/native'
 
-const CarouselHeaderComponent = () => {
+const CarouselHeaderComponent = (props) => {
+    const { backArrow, date, title, count, photos, onPress, backgroundImage } = props
     const navigation = useNavigation()
 
     return (
-        <View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image source={programs} style={{ width: WIDTH, height: HEIGHT * 0.3 }} resizeMode='cover' />
-                <Pressable style={{ position: 'absolute', borderWidth: 0, top: HEIGHT * 0.05, padding: 5, left: WIDTH * 0.04, justifyContent: "center", alignItems: 'center', borderRadius: WIDTH * 0.02, backgroundColor: colors.grey, width: WIDTH * 0.1 }} onPress={() => navigation.goBack()}>
-                    <Image source={backarrow} style={{ width: WIDTH * 0.08, height: HEIGHT * 0.03, marginLeft: 10, alignSelf: "center" }} resizeMode='contain' />
+        <View style={{}}>
+            <Image source={backgroundImage} resizeMode='cover' style={{ width: WIDTH, height: HEIGHT * 0.33 }} />
+            <View style={{ marginHorizontal: WIDTH * 0.05, position: 'absolute', top: HEIGHT * 0.06 }}>
+                <Pressable style={{ borderWidth: 0, padding: 8, borderRadius: WIDTH * 0.02, backgroundColor: colors.grey }} onPress={onPress}>
+                    <Image source={backArrow} style={{ width: WIDTH * 0.04, height: HEIGHT * 0.025 }} resizeMode='contain' />
                 </Pressable>
+            </View>
+            <View style={{ flexDirection: 'row', position: 'absolute', bottom: HEIGHT * 0.02, alignItems: 'center', marginHorizontal: WIDTH * 0.05 }}>
+                <View>
+                    <Text style={{ fontSize: 12, color: colors.white, fontWeight: "bold", width: WIDTH * 0.65 }}>{date}</Text>
+                    <Text style={{ fontSize: 16, color: colors.white, width: WIDTH * 0.6, marginTop: HEIGHT * 0.01 }}>{title}</Text>
+                </View>
+                <View style={{ borderWidth: 1, marginLeft: WIDTH * 0.10, borderColor: colors.purewhite, borderRadius: WIDTH * 0.015, justifyContent: 'center', alignItems: 'center', width: WIDTH * 0.15, height: HEIGHT * 0.07, backgroundColor: colors.purewhite }}>
+                    <Text style={{ color: colors.red, fontSize: 16 }}>{count}</Text>
+                    <Text style={{ color: colors.btnbackground, fontSize: 10 }}>{photos}</Text>
+                </View>
             </View>
         </View >
     )

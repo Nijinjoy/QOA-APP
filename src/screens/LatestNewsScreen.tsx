@@ -1,5 +1,5 @@
-import { View, Text, FlatList, Pressable } from 'react-native'
-import React from 'react'
+import { View, Text, FlatList, Pressable, ActivityIndicator } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 import HeaderComponent from '../components/HeaderComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 import colors from '../constants/Colors'
@@ -7,36 +7,46 @@ import { useNavigation } from '@react-navigation/native'
 import { backarrow, filter, programs } from '../assets/images'
 import SearchComponent from '../components/SearchComponent'
 import CommonComponent from '../components/CommonComponent'
+import fetchData from './apiService'
 
 const LatestNewsScreen = () => {
     const navigation = useNavigation()
+    const [loading, setLoading] = useState(true);
+    const [news, setNews] = useState([]);
+    const [page, setPage] = useState(1);
+    const [isFetching, setIsFetching] = useState(false);
 
-    const data = [
-        {
-            id: '1',
-            imageUrl: programs,
-            category: 'In publishing and graphic design, Lorem ipsum is a placeholder  ',
-            title: '2_6 June 2022',
-            // date: '26 June 2022'
-        },
-        {
-            id: '2',
-            imageUrl: programs,
-            category: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly  ',
-            title: '2_6 June 2022',
-            date: '26 June 2022'
-        },
-        {
-            id: '3',
-            imageUrl: programs,
-            category: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the v',
-            title: '26 June 2022',
-            date: '26 June 2022'
-        },
-    ];
+    console.log("news===>", news);
+
+    useEffect(() => {
+        fetchNewsData();
+    }, [isFetching]);
+
+    const fetchNewsData = async () => {
+
+        setIsFetching(true);
+        try {
+            const body = { keyword: '', pager: page };
+            const response = await fetchData('/news', body);
+            const newNewsData = response?.data || [];
+            setNews(prevNews => [...prevNews, ...newNewsData]);
+            setPage(prevPage => prevPage + 1);
+        } catch (error) {
+            console.error('Error fetching news data:', error);
+        } finally {
+            setIsFetching(false);
+            console.log('Finished fetching news data.');
+        }
+    };
+
+    const handleEndReached = () => {
+        if (!isFetching) {
+            fetchNewsData();
+        }
+    };
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <HeaderComponent
                 title="Latest News"
                 headerStyle={{ height: HEIGHT * 0.17 }}
@@ -51,25 +61,25 @@ const LatestNewsScreen = () => {
                     placeholderTextColor={colors.lightgrey}
                 />
             </View>
-            <Pressable style={{ marginTop: 40, marginHorizontal: WIDTH * 0.02 }} >
+            <Pressable onPress={() => navigation.navigate("NewsDetailScreen")} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <FlatList
-                    data={data}
+                    data={news}
                     showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingBottom: 90, alignItems: "center", justifyContent: "center", marginTop: HEIGHT * 0.0 }}
-                    keyExtractor={(item) => item.id.toString()}
+                    contentContainerStyle={{ alignItems: "center", justifyContent: "center", paddingTop: HEIGHT * 0.034 }}
+                    keyExtractor={(item, index) => item.nid.toString() + index}
                     renderItem={({ item }) => {
                         return (
                             <Pressable style={{ marginTop: HEIGHT * 0.02, marginHorizontal: WIDTH * 0.05 }} onPress={() => navigation.navigate("NewsDetailScreen")}>
                                 <CommonComponent
-                                    imageUrl={item.imageUrl}
-                                    category={item.category}
+                                    imageUrl={item.image_url}
                                     title={item.title}
-                                    date={item.date}
-                                // language={item.language}
                                 />
                             </Pressable>
                         )
                     }}
+                    onEndReached={handleEndReached}
+                    onEndReachedThreshold={0.1}
+                    ListFooterComponent={isFetching && <ActivityIndicator size='small' color={colors.red} />}
                 />
             </Pressable>
         </View >

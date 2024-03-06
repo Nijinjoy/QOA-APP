@@ -10,13 +10,13 @@ const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home Screen</Text>
+        <Text>HomeScreen</Text>
     </View>
 );
 
 const ProfileScreen = () => (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Profile Screen</Text>
+        <Text>ProfileScreen</Text>
     </View>
 );
 const HelpScreen = () => (
@@ -61,13 +61,16 @@ const BottomTabComponent = () => {
                 tabBarStyle: { backgroundColor: colors.black, height: HEIGHT * 0.1 },
             })}
         >
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
-            <Tab.Screen name="Separator2" component={Separator} />
-            <Tab.Screen name="HelpScreen" component={HelpScreen} />
-            <Tab.Screen name="SplashScreen" component={SplashScreen} />
+            <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Separator2" component={Separator} options={{ headerShown: false }} />
+            <Tab.Screen name="HelpScreen" component={HelpScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
         </Tab.Navigator >
     );
 }
 
+
 export default BottomTabComponent;
+
+

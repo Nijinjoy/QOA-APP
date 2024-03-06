@@ -16,7 +16,8 @@ const drawerFlatlist = [
     },
     {
         id: 3,
-        label: "Media Gallery"
+        label: "Media Gallery",
+        path: "BottomScreen"
     },
     {
         id: 4,
