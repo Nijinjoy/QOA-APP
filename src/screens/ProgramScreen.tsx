@@ -45,23 +45,24 @@ const ProgramScreen = () => {
         <View>
             <HeaderComponent
                 title="Programs"
-                headerStyle={{ height: HEIGHT * 0.15 }}
+                headerStyle={{ height: HEIGHT * 0.13 }}
                 containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.05, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
                 onPress={() => navigation.goBack()}
                 icon={backarrow} />
             <Image source={programs} style={{ width: WIDTH, height: HEIGHT * 0.32, }} resizeMode='cover' />
-            <View style={{ position: 'absolute', width: WIDTH, /* marginHorizontal: WIDTH * 0.05, */ justifyContent: "center", alignItems: 'center', top: HEIGHT * 0.42 }}>
+            <View style={{ position: 'absolute', width: WIDTH, justifyContent: "center", alignItems: 'center', top: HEIGHT * 0.4 }}>
                 <CalenderComponent />
             </View>
             <View style={{ marginHorizontal: WIDTH * 0.05 }}>
                 <Text style={{ fontSize: 15, color: colors.black, marginTop: HEIGHT * 0.07 }}>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual . Lorem ipsum may be used as a placeholder before the final copy is available.</Text>
                 <FlatList
                     data={programFlatlist}
-                    contentContainerStyle={{}}
+                    // showsVerticalScrollIndicator={false} 
+                    scrollEnabled={false}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item, index }) => {
                         return (
-                            <Pressable onPress={() => navigation.navigate(item.path)} style={{ borderWidth: 0, borderRadius: WIDTH * 0.02, backgroundColor: item.background, flexDirection: 'row', alignItems: "center", padding: HEIGHT * 0.025, marginTop: HEIGHT * 0.02 }}>
+                            <Pressable onPress={() => navigation.navigate(item.path)} style={{ borderWidth: 0, borderRadius: WIDTH * 0.02, backgroundColor: item.background, flexDirection: 'row', alignItems: "center", padding: HEIGHT * 0.023, marginTop: HEIGHT * 0.01 }}>
                                 <View style={{ marginHorizontal: WIDTH * 0.02, flex: 0.2 }}>
                                     <Image source={item.icon} style={{ width: WIDTH * 0.1 }} resizeMode='contain' />
                                 </View>

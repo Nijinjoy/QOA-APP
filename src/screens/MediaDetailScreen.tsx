@@ -12,28 +12,30 @@ const MediaDetailScreen = () => {
     const navigation = useNavigation()
     const route = useRoute();
     const { nid } = route.params;
-    const [mediaDetail, setMediaDetail] = useState([]);
+    const [mediaDetail, setMediaDetail] = useState({});
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-    const [backgroundImage, setBackgroundImage] = useState([]);
+
+    // useEffect(() => {
+    //     fetchMediaDetail();
+    // }, [nid, page]);
 
     useEffect(() => {
         fetchMediaDetail();
-    }, [nid, page]);
+    }, []);
+
+
+    console.log("newsDetail==>", mediaDetail);
 
     const fetchMediaDetail = async () => {
         try {
             setLoading(true);
-            const data = await fetchData('/media-detail', { nid: nid, page: page });
-            if (data) {
-                if (page === 1) {
-                    setMediaDetail(data);
-                    setBackgroundImage(data?.data);
-                } else {
-                    setMediaDetail(prevData => ({ ...prevData, data: [...prevData.data, ...data.data] }));
-                }
-                setTotalPages(data.totalPages);
+            const data = await fetchData('/media-detail', { nid: nid });
+            if (data && data.status && data.data) {
+                const { title, description, image_url, date, nid } = data.data;
+                setMediaDetail({ title, description, image_url, date, nid });
+                // setBackgroundImage(image_url);
             }
         } catch (error) {
             console.error('Error fetching media detail:', error);
@@ -52,7 +54,7 @@ const MediaDetailScreen = () => {
         const screenWidth = Dimensions.get('window').width;
         const screenHeight = Dimensions.get('window').height;
 
-        const widthPercentage = Math.floor(Math.random() * 20 + 50);
+        const widthPercentage = Math.floor(Math.random() * 20 + 30);
         const heightPercentage = Math.floor(Math.random() * 20 + 20);
 
         const width = (screenWidth * widthPercentage) / 100;
@@ -64,21 +66,21 @@ const MediaDetailScreen = () => {
         <View style={{ flex: 1 }}>
             <CarouselHeaderComponent
                 backArrow={backarrow}
-                backgroundImage={backgroundImage?.image_url}
-                date={backgroundImage?.title}
-                title={backgroundImage?.date}
-                count={backgroundImage?.count}
+                backgroundImage={mediaDetail?.image_url[0]}
+                title={mediaDetail?.title}
+                date={mediaDetail?.date}
                 photos="Photos"
                 onPress={() => navigation.goBack()}
             />
             <View style={{ marginHorizontal: WIDTH * 0.05, paddingBottom: HEIGHT * 0.02, paddingTop: HEIGHT * 0.02 }}>
                 <FlatList
-                    data={mediaDetail?.data?.image_url}
+                    data={mediaDetail?.image_url}
                     numColumns={2}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{}}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
+                        console.log("data===>", item);
                         const { width, height } = getRandomSize();
                         return (
                             <Pressable style={{ borderRadius: WIDTH * 0.02, marginBottom: HEIGHT * 0.015, margin: 1 }}>
@@ -99,3 +101,23 @@ const MediaDetailScreen = () => {
 }
 
 export default MediaDetailScreen
+
+    // const fetchMediaDetail = async () => {
+    //     try {
+    //         setLoading(true);
+    //         const data = await fetchData('/media-detail', { nid: nid, page: page });
+    //         if (data) {
+    //             if (page === 1) {
+    //                 setMediaDetail(data);
+    //                 setBackgroundImage(data?.data);
+    //             } else {
+    //                 setMediaDetail(prevData => ({ ...prevData, data: [...prevData.data, ...data.data] }));
+    //             }
+    //             setTotalPages(data.totalPages);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching media detail:', error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };

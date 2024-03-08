@@ -20,10 +20,9 @@ const LatestNewsScreen = () => {
 
     useEffect(() => {
         fetchNewsData();
-    }, [isFetching]);
+    }, []);
 
     const fetchNewsData = async () => {
-
         setIsFetching(true);
         try {
             const body = { keyword: '', pager: page };
@@ -45,6 +44,10 @@ const LatestNewsScreen = () => {
         }
     };
 
+    const navigateToDetailScreen = (item) => {
+        navigation.navigate('NewsDetailScreen', { nid: item.nid });
+    };
+
     return (
         <View style={{ flex: 1 }}>
             <HeaderComponent
@@ -61,7 +64,7 @@ const LatestNewsScreen = () => {
                     placeholderTextColor={colors.lightgrey}
                 />
             </View>
-            <Pressable onPress={() => navigation.navigate("NewsDetailScreen")} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <FlatList
                     data={news}
                     showsVerticalScrollIndicator={false}
@@ -69,9 +72,10 @@ const LatestNewsScreen = () => {
                     keyExtractor={(item, index) => item.nid.toString() + index}
                     renderItem={({ item }) => {
                         return (
-                            <Pressable style={{ marginTop: HEIGHT * 0.02, marginHorizontal: WIDTH * 0.05 }} onPress={() => navigation.navigate("NewsDetailScreen")}>
+                            <Pressable style={{ marginTop: HEIGHT * 0.02, marginHorizontal: WIDTH * 0.05 }} onPress={() => navigateToDetailScreen(item)}>
                                 <CommonComponent
                                     imageUrl={item.image_url}
+                                    date={item.date}
                                     title={item.title}
                                 />
                             </Pressable>

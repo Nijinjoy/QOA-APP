@@ -20,6 +20,9 @@ import MediaScreen from '../screens/MediaScreen';
 import MediaDetailScreen from '../screens/MediaDetailScreen';
 import MonthPrgmScreen from '../screens/MonthPrgmScreen';
 import BottomScreen from '../screens/BottomScreen';
+import DiplomaListingScreen from '../screens/DiplomaDetailScreen';
+import DiplomaDetailScreen from '../screens/DiplomaDetailScreen';
+import CertificateDetailScreen from '../screens/CertificateDetailScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -58,13 +61,14 @@ const Routes = () => {
                 <Stack.Screen name='MediaScreen' component={MediaScreen} />
                 <Stack.Screen name='MediaDetailScreen' component={MediaDetailScreen} />
                 <Stack.Screen name='MonthPrgmScreen' component={MonthPrgmScreen} />
-                <Stack.Screen name='BottomScreen' component={BottomScreen} />
+                <Stack.Screen name='DiplomaDetailScreen' component={DiplomaDetailScreen} />
+                <Stack.Screen name='CertificateDetailScreen' component={CertificateDetailScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
-// BottomScreen
+//CertificateDetailScreen
 
 export default Routes

@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Pressable } from 'react-native'
 import React from 'react'
 import HeaderComponent from '../components/HeaderComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
@@ -60,7 +60,7 @@ const CertificateScreen = () => {
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => {
                         return (
-                            <View style={{ marginTop: HEIGHT * 0.03 }}>
+                            <Pressable style={{ marginTop: HEIGHT * 0.03 }} onPress={() => navigation.navigate("CertificateDetailScreen")}>
                                 <CommonComponent
                                     imageUrl={item.imageUrl}
                                     category={item.category}
@@ -68,7 +68,7 @@ const CertificateScreen = () => {
                                     date={item.date}
                                     language={item.language}
                                 />
-                            </View>
+                            </Pressable>
                         )
                     }}
                 />

@@ -19,3 +19,5 @@ const colors = {
 }
 
 export default colors;
+
+// #000000
