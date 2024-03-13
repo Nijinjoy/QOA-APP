@@ -7,18 +7,24 @@ import CourseComponent from '../components/CourseComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 import ButtonComponent from '../components/ButtonComponent'
 
-const CertificateDetailScreen = () => {
+const CertificateDetailScreen = ({ route }) => {
+    const { imageUrl } = route.params;
+
+    console.log("mageUrl==>", imageUrl);
+
     return (
         <View style={{ flex: 1 }}>
             <CarouselHeaderComponent
-                backgroundImage={programs}
+                backgroundImage={{ uri: imageUrl }}
                 backgroundcolor={`${colors.white}50`}
             />
-            <View style={{ justifyContent: "center", alignItems: 'center', }}>
-                <CourseComponent />
+            <View style={{ justifyContent: "center", alignItems: 'center', bottom: HEIGHT * 0.05 }}>
+                <CourseComponent
+                // moduleCount={}
+                />
             </View>
             <ScrollView style={{ marginHorizontal: WIDTH * 0.05 }} showsVerticalScrollIndicator={false}>
-                <Text style={{ fontSize: 16, color: colors.darkred, fontWeight: '500', marginTop: HEIGHT * 0.03 }}>Target Audience</Text>
+                <Text style={{ fontSize: 16, color: colors.darkred, fontWeight: '500', marginTop: HEIGHT * 0.01 }}>Target Audience</Text>
                 <Text style={{ fontSize: 15, color: colors.grey, marginTop: HEIGHT * 0.01, marginTop: HEIGHT * 0.01 }}>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content</Text>
                 <Text style={{ fontSize: 16, color: colors.darkred, fontWeight: '500', marginTop: HEIGHT * 0.02 }}>Instructor</Text>
                 <Text style={{ fontSize: 15, color: colors.grey, marginTop: HEIGHT * 0.01 }}>In publishing and graphic design, Lorem ipsum is a placeholder text</Text>

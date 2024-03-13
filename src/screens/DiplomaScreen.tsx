@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, Pressable, Modal, ScrollView, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, FlatList, Image, Pressable, Modal, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import HeaderComponent from '../components/HeaderComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
@@ -17,8 +17,6 @@ const DiplomaScreen = () => {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [diploma, setDiploma] = useState([]);
-
-    // console.log("diploma===>", diploma);
 
     useEffect(() => {
         fetchDiploma();
@@ -68,7 +66,9 @@ const DiplomaScreen = () => {
                         <Pressable style={{ borderWidth: 0.5, width: WIDTH * 0.35, padding: WIDTH * 0.02, justifyContent: 'center', alignItems: 'center', borderRadius: WIDTH * 0.01, borderColor: colors.grey }} onPress={() => { setModalVisible(true) }}>
                             <Text style={{ fontSize: 13, fontWeight: "500", color: colors.black }}>View Details</Text>
                         </Pressable>
-                        <Pressable style={{ borderWidth: 0, width: WIDTH * 0.35, padding: WIDTH * 0.02, justifyContent: 'center', alignItems: 'center', marginHorizontal: WIDTH * 0.05, borderRadius: WIDTH * 0.01, backgroundColor: colors.darkred }}>
+                        <Pressable
+                            onPress={() => navigation.navigate("CourseRegistrationScreen")}
+                            style={{ borderWidth: 0, width: WIDTH * 0.35, padding: WIDTH * 0.02, justifyContent: 'center', alignItems: 'center', marginHorizontal: WIDTH * 0.05, borderRadius: WIDTH * 0.01, backgroundColor: colors.darkred }}>
                             <Text style={{ fontSize: 13, color: colors.purewhite, fontWeight: "bold" }}>Apply</Text>
                         </Pressable>
                     </View>

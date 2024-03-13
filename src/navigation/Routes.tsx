@@ -23,6 +23,7 @@ import BottomScreen from '../screens/BottomScreen';
 import DiplomaListingScreen from '../screens/DiplomaDetailScreen';
 import DiplomaDetailScreen from '../screens/DiplomaDetailScreen';
 import CertificateDetailScreen from '../screens/CertificateDetailScreen';
+import CourseRegistrationScreen from '../screens/CourseRegistrationScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -63,6 +64,7 @@ const Routes = () => {
                 <Stack.Screen name='MonthPrgmScreen' component={MonthPrgmScreen} />
                 <Stack.Screen name='DiplomaDetailScreen' component={DiplomaDetailScreen} />
                 <Stack.Screen name='CertificateDetailScreen' component={CertificateDetailScreen} />
+                <Stack.Screen name='CourseRegistrationScreen' component={CourseRegistrationScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
             </Stack.Navigator>
         </NavigationContainer>

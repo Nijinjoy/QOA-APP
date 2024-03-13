@@ -9,7 +9,7 @@ const SearchComponent = (props) => {
     return (
         <View style={{ borderWidth: 0, marginHorizontal: WIDTH * 0.05, padding: HEIGHT * 0.01, flexDirection: 'row', alignItems: 'center', ...containerStyle, }}>
             <View style={{ flex: 0.1 }}>
-                <Image source={search} style={{ width: WIDTH * 0.05, height: HEIGHT * 0.02, marginHorizontal: WIDTH * 0.02 }} tintColor={tintColor} resizeMode='contain' />
+                <Image source={search} style={{ width: WIDTH * 0.05, height: HEIGHT * 0.03, marginHorizontal: WIDTH * 0.02 }} tintColor={tintColor} resizeMode='contain' />
             </View>
             <View style={{ flex: 0.8 }}>
                 <TextInput

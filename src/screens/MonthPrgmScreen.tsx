@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import HeaderComponent from '../components/HeaderComponent'
-import { backarrow, hands, programs } from '../assets/images'
+import { backarrow, filter, hands, programs } from '../assets/images'
 import { useNavigation } from '@react-navigation/native'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 import colors from '../constants/Colors'
@@ -24,6 +24,8 @@ const MonthPrgmScreen = () => {
                     containerStyle={{ width: '100%', borderRadius: WIDTH * 0.02, backgroundColor: colors.purewhite, borderColor: colors.grey }}
                     tintColor={colors.black}
                     placeholderTextColor={colors.lightgrey}
+                    filterBackground={colors.darkred}
+                    filterLogo={filter}
                 />
             </View>
             <View style={{ marginHorizontal: WIDTH * 0.05 }}>

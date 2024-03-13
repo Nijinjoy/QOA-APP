@@ -35,7 +35,6 @@ const MediaDetailScreen = () => {
             if (data && data.status && data.data) {
                 const { title, description, image_url, date, nid } = data.data;
                 setMediaDetail({ title, description, image_url, date, nid });
-                // setBackgroundImage(image_url);
             }
         } catch (error) {
             console.error('Error fetching media detail:', error);

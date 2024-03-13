@@ -17,10 +17,6 @@ const NewsDetailScreen = () => {
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
 
-    // console.log("newsDetail==>", newsDetail?.title);
-    // console.log("newsid==>", nid);
-
-
     useEffect(() => {
         fetchNewsDetail();
     }, [nid, page]);
@@ -46,7 +42,8 @@ const NewsDetailScreen = () => {
         <View style={{ backgroundColor: colors.purewhite, flex: 1 }}>
             <CarouselHeaderComponent
                 backgroundcolor={`${colors.shadowcolor}25`}
-                backgroundImage={newsDetail?.image_url}
+                // backgroundImage={newsDetail?.image_url}
+                backgroundImage={{ uri: newsDetail?.image_url }}
             />
             <View style={{}}>
                 <FlatList

@@ -5,7 +5,8 @@ import { HEIGHT, WIDTH } from '../constants/Dimension'
 import { hands } from '../assets/images'
 import StripComponent from './StripComponent'
 
-const CourseComponent = () => {
+const CourseComponent = (props) => {
+    const { moduleCount, courseName, coursePrice, startDate, endDate } = props
 
     const coloredViews = [
         { backgroundColor: colors.skyblue, width: WIDTH * 0.2 },
@@ -18,14 +19,14 @@ const CourseComponent = () => {
             <View style={{ backgroundColor: colors.darkred, width: WIDTH * 0.15, padding: WIDTH * 0.02, borderRadius: WIDTH * 0.01, justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ fontSize: 13, color: colors.purewhite }}>Online</Text>
             </View>
-            <Text style={{ fontSize: 13, color: colors.skyblue, marginTop: HEIGHT * 0.02 }}>6 Modules</Text>
-            <Text style={{ fontSize: 18, color: colors.black, marginTop: HEIGHT * 0.01 }}>Advanced Sport Management Course</Text>
+            <Text style={{ fontSize: 13, color: colors.skyblue, marginTop: HEIGHT * 0.02 }}>{moduleCount} Modules</Text>
+            <Text style={{ fontSize: 18, color: colors.black, marginTop: HEIGHT * 0.01 }}>{courseName}</Text>
             <View style={{ flexDirection: 'row', marginTop: HEIGHT * 0.02 }}>
                 <View>
-                    <Text style={{ fontSize: 13, color: colors.grey }}>15 Feb, 2022</Text>
+                    <Text style={{ fontSize: 13, color: colors.grey }}>{startDate}</Text>
                 </View>
                 <View style={{ marginLeft: WIDTH * 0.05 }}>
-                    <Text style={{ fontSize: 13, color: colors.grey }}>15 Feb, 2022</Text>
+                    <Text style={{ fontSize: 13, color: colors.grey }}>{endDate}</Text>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", marginTop: HEIGHT * 0.03 }}>
@@ -35,7 +36,7 @@ const CourseComponent = () => {
                     <Image source={hands} style={{ marginHorizontal: WIDTH * 0.0 }} />
                 </View>
                 <View>
-                    <Text style={{ fontSize: 15, color: colors.black }}>Qar<Text style={{ fontSize: 15, color: colors.darkred, fontWeight: 'bold', marginHorizontal: WIDTH * 0.03 }}> 10950</Text></Text>
+                    <Text style={{ fontSize: 15, color: colors.black }}>Qar<Text style={{ fontSize: 15, color: colors.darkred, fontWeight: 'bold', marginHorizontal: WIDTH * 0.03 }}> {coursePrice}</Text></Text>
                 </View>
             </View>
             <View style={{ position: 'absolute', bottom: 0, width: WIDTH }}>
