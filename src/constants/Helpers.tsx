@@ -5,5 +5,4 @@ const timestampToDate = (unixTimestamp) => {
     return format(date, 'dd MMM yyyy');
 };
 
-
 export { timestampToDate }

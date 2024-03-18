@@ -44,9 +44,10 @@ const HomeScreen = () => {
         <View >
             <View>
                 <HeaderComponent title="Discover" icon={drawericon}
-                    // onPress={() => navigation.toggleDrawer()}
+                    onPress={() => navigation.toggleDrawer()}
+                    // containerStyle={{ height: HEIGHT * 0.1 }}
                     onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-                    iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} />
+             /*        iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} */ />
                 <SearchComponent
                     containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.12, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite}
                     placeholderTextColor={colors.white}

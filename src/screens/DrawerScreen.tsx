@@ -6,19 +6,15 @@ import { HEIGHT, WIDTH } from '../constants/Dimension';
 import { useNavigation } from '@react-navigation/native';
 
 const drawerFlatlist = [
-    // {
-    //     id: 1,
-    //     label: "Courses"
-    // },
     {
         id: 2,
-        label: "News"
+        label: "News",
+        path: 'LatestNewsScreen'
     },
     {
         id: 3,
         label: "Media Gallery",
-        // path: 'MediaScreen'
-        path: "BottomScreen"
+        path: 'MediaScreen'
     },
     {
         id: 4,
@@ -28,34 +24,43 @@ const drawerFlatlist = [
         subList: [
             {
                 id: 1,
-                sublabel: 'About QOA'
+                sublabel: 'About QOA',
+                path: 'AboutusScreen',
+                apiKey: "about_us",
+                screenName: "About Us"
             },
             {
                 id: 2,
-                sublabel: "President's Message"
+                sublabel: "President's Message",
+                apiKey: "president_message",
+                screenName: "President's Message"
             },
             {
                 id: 3,
-                sublabel: "Executive Director's Message"
+                sublabel: "Executive Director's Message",
+                apiKey: "executive_directors_message",
+                screenName: "Executive Director's Message"
             },
             {
                 id: 4,
-                sublabel: "Board Members"
+                sublabel: "Board Members",
+                apiKey: "board_members",
+                screenName: "Board Members"
             },
             {
                 id: 5,
-                sublabel: "Advisory Committee"
+                sublabel: "Advisory Committee",
+                apiKey: "advisory_committee",
+                screenName: "Advisory Committee"
             },
             {
                 id: 6,
-                sublabel: "Our Partners"
+                sublabel: "Our Partners",
+                apiKey: "partners",
+                screenName: "Our Partners"
             }
         ]
     },
-    // {
-    //     id: 5,
-    //     label: "Financing Your Program"
-    // },
     {
         id: 6,
         label: "Contact Us",
@@ -78,7 +83,7 @@ const DrawerScreen = () => {
     };
 
     return (
-        <View>
+        <View style={{ backgroundColor: colors.lightwhite, flex: 1 }}>
             <View style={{ margin: HEIGHT * 0.05 }}>
                 <Image source={drawerlogo} style={{ width: WIDTH * 0.41, height: HEIGHT * 0.101 }} resizeMode='contain' />
                 <FlatList
@@ -107,8 +112,20 @@ const DrawerScreen = () => {
                                 </Pressable>
                                 {item.label === 'About Us' && expanded && (
                                     <View style={{ margin: WIDTH * 0.01 }}>
+
                                         {item.subList.map((subItem, index) => (
-                                            <Text key={index} style={{ fontSize: 14, marginTop: HEIGHT * 0.02, marginLeft: WIDTH * 0.03, color: colors.black }}>{subItem.sublabel}</Text>
+                                            <Pressable key={index} onPress={() => {
+                                                if (subItem.screenName === 'Our Partners') {
+                                                    navigation.navigate('PartnerScreen');
+                                                } else {
+                                                    navigation.navigate('AboutusScreen', {
+                                                        apidata: subItem?.apiKey,
+                                                        screenTitle: subItem?.screenName
+                                                    });
+                                                }
+                                            }}>
+                                                <Text style={{ fontSize: 14, marginTop: HEIGHT * 0.02, marginLeft: WIDTH * 0.03, color: colors.black }}>{subItem.sublabel}</Text>
+                                            </Pressable>
                                         ))}
                                     </View>
                                 )}

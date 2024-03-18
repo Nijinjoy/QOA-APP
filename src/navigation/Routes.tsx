@@ -24,6 +24,8 @@ import DiplomaListingScreen from '../screens/DiplomaDetailScreen';
 import DiplomaDetailScreen from '../screens/DiplomaDetailScreen';
 import CertificateDetailScreen from '../screens/CertificateDetailScreen';
 import CourseRegistrationScreen from '../screens/CourseRegistrationScreen';
+import AboutusScreen from '../screens/AboutusScreen';
+import PartnerScreen from '../screens/PartnerScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -42,6 +44,7 @@ const Drawers = () => {
 
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="HelpScreen" component={HelpScreen} />
+            {/* <Drawer.Screen name='AboutusScreen' component={AboutusScreen} /> */}
         </Drawer.Navigator>
     );
 };
@@ -65,12 +68,12 @@ const Routes = () => {
                 <Stack.Screen name='DiplomaDetailScreen' component={DiplomaDetailScreen} />
                 <Stack.Screen name='CertificateDetailScreen' component={CertificateDetailScreen} />
                 <Stack.Screen name='CourseRegistrationScreen' component={CourseRegistrationScreen} />
+                <Stack.Screen name='AboutusScreen' component={AboutusScreen} />
+                <Stack.Screen name='PartnerScreen' component={PartnerScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
-
-//CertificateDetailScreen
 
 export default Routes

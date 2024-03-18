@@ -8,6 +8,7 @@ import { backarrow, filter, programs } from '../assets/images'
 import SearchComponent from '../components/SearchComponent'
 import CommonComponent from '../components/CommonComponent'
 import fetchData from './apiService'
+import { timestampToDate } from '../constants/Helpers'
 
 const LatestNewsScreen = () => {
     const navigation = useNavigation()
@@ -71,11 +72,12 @@ const LatestNewsScreen = () => {
                     contentContainerStyle={{ alignItems: "center", justifyContent: "center", paddingTop: HEIGHT * 0.034 }}
                     keyExtractor={(item, index) => item.nid.toString() + index}
                     renderItem={({ item }) => {
+                        const startDate = timestampToDate(item?.date);
                         return (
                             <Pressable style={{ marginTop: HEIGHT * 0.02, marginHorizontal: WIDTH * 0.05 }} onPress={() => navigateToDetailScreen(item)}>
                                 <CommonComponent
                                     imageUrl={item.image_url}
-                                    date={item.date}
+                                    date={startDate}
                                     title={item.title}
                                 />
                             </Pressable>

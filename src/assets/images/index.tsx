@@ -37,6 +37,8 @@ import cart from '../images/cart/cart.png'
 import profilee from '../images/profilee/profile.png'
 import love from '../images/love/love.png'
 import homefocussed from '../images/homefocussed/homefocussed.png'
+import linkarrow from '../images/linkarrow/linkarrow.png'
+import appostrophy from '../images/appostrophy/appostrophy.png'
 
 
-export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter, phone, mobile, location, email, plus, profile, cart, home, profilee, love, homefocussed }
+export { logo, crossintersection, drawericon, headerintersection, backarrow, search, month, allprograms, news, media, appicon, upArrow, downArrow, drawerlogo, arabic, programs, diploma, nextarrow, certificates, higherstudy, arrowintersection, bookshelf, dotintersection, olympics, hands, translation, filter, phone, mobile, location, email, plus, profile, cart, home, profilee, love, homefocussed, linkarrow, appostrophy }
