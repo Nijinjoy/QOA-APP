@@ -13,7 +13,7 @@ const CommonComponent = (props) => {
             <Image source={{ uri: imageUrl }} style={{ height: HEIGHT * 0.2, borderTopLeftRadius: WIDTH * 0.02, width: WIDTH * 0.89, borderTopRightRadius: WIDTH * 0.02 }} />
             <View style={{ margin: HEIGHT * 0.02, width: WIDTH * 0.8 }}>
                 <Text style={{ fontSize: 13, color: colors.skyblue }}>{/* {formattedDate} */} {date}</Text>
-                <Text style={{ fontSize: 15, color: colors.black, fontWeight: "500", width: WIDTH * 0.8, marginTop: HEIGHT * 0.005 }}>{title}</Text>
+                <Text style={{ fontSize: 15, color: colors.black, fontWeight: "400", width: WIDTH * 0.8, marginTop: HEIGHT * 0.005 }}>{title}</Text>
                 {innerComponent && innerComponent}
             </View>
             {badgeText && (

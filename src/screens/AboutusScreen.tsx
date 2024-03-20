@@ -98,24 +98,44 @@ const AboutusScreen = (props) => {
                         />
                     )}
 
-                    {apidata === "advisory_committee" && (
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
-                            {committeeMembers.map((member, index) => (
-                                <AdvisoryCard
-                                    key={index}
-                                    cardImage={member?.image}
-                                    name={member?.name}
-                                    subTitle={member?.sub_title}
-                                    Designation={member?.designation}
-                                />
-                            ))}
-                        </View>
+                    <View style={{ alignItems: 'center', justifyContent: 'center', marginHorizontal: WIDTH * 0.05 }}>
+                        {apidata === "advisory_committee" && (
+                            <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start', alignItems: 'flex-start', marginTop: HEIGHT * 0.02 }}>
+                                {committeeMembers.map((member, index) => (
+                                    <AdvisoryCard
+                                        key={index}
+                                        cardImage={member?.image}
+                                        name={member?.name}
+                                        subTitle={member?.sub_title}
+                                        Designation={member?.designation}
+                                    />
+                                ))}
+                            </View>
+                        )}
+                    </View>
 
-                    )}
+                    {/* <View style={{ flex: 1, alignItems: 'center' }}>
+                        <View style={{ maxWidth: 600, alignSelf: 'flex-start', paddingHorizontal: 20 }}>
+                            {apidata === "advisory_committee" && (
+                                <View style={{ marginTop: HEIGHT * 0.02 }}>
+                                    {committeeMembers.map((member, index) => (
+                                        <AdvisoryCard
+                                            key={index}
+                                            cardImage={member?.image}
+                                            name={member?.name}
+                                            subTitle={member?.sub_title}
+                                            Designation={member?.designation}
+                                        />
+                                    ))}
+                                </View>
+                            )}
+                        </View>
+                    </View> */}
 
                     <View style={{ justifyContent: 'center', alignItems: 'center', paddingBottom: HEIGHT * 0.05 }}>
                         <LinkComponent />
                     </View>
+
                 </View>
             </ScrollView>
         </View>

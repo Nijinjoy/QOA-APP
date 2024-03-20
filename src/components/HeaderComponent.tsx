@@ -5,8 +5,6 @@ import colors from '../constants/Colors'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 
 const HeaderComponent = (props) => {
-    // const { onPress, HeaderTitle, rightIcon, backArrow, headerImage, imageStyle, navigate } = props
-
     const { title = "Label", icon, onPress, iconStyle = { backgroundColor: colors.darkViolet, width: WIDTH * 0.07, height: HEIGHT * 0.03, borderRadius: WIDTH * 0.02 }, titleStyle = { color: colors.white }, containerStyle = { width: WIDTH * 0.15, height: HEIGHT * 0.06 }, headerStyle = {
         height: HEIGHT
             * 0.22
@@ -41,5 +39,3 @@ export default HeaderComponent
     </View>
 </SafeAreaView>
 </ImageBackground > */}
-
-10001078696

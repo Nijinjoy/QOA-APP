@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, Pressable, Image } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, FlatList, Pressable, Image, Animated, Easing } from 'react-native';
 import { arabic, downArrow, drawerlogo, upArrow } from '../assets/images';
 import colors from '../constants/Colors';
 import { HEIGHT, WIDTH } from '../constants/Dimension';
@@ -80,6 +80,7 @@ const DrawerScreen = () => {
 
     const selectLanguage = (language) => {
         setSelectedLanguage(language);
+        console.log('Selected language:', language);
     };
 
     return (
@@ -149,7 +150,7 @@ const DrawerScreen = () => {
                         <Text style={{ color: selectedLanguage === 'English' ? colors.red : colors.black }}>English</Text>
                     </Pressable>
                     <Pressable
-                        onPress={() => selectLanguage('Hindi')}
+                        onPress={() => selectLanguage('Arabic')}
                         style={{
                             padding: HEIGHT * 0.009,
                             justifyContent: 'center',
@@ -157,9 +158,9 @@ const DrawerScreen = () => {
                             borderRadius: WIDTH * 0.01,
                             margin: HEIGHT * 0.006,
                             width: WIDTH * 0.19,
-                            backgroundColor: selectedLanguage === 'Hindi' ? colors.purewhite : colors.lightgrey
+                            backgroundColor: selectedLanguage === 'Arabic' ? colors.purewhite : colors.lightgrey
                         }}>
-                        <Image source={arabic} resizeMode='contain' tintColor={selectedLanguage === 'Hindi' ? colors.red : colors.black} />
+                        <Image source={arabic} resizeMode='contain' tintColor={selectedLanguage === 'Arabic' ? colors.red : colors.black} />
                     </Pressable>
                 </View>
             </View>

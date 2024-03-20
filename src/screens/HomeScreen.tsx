@@ -6,6 +6,7 @@ import { allprograms, appicon, drawericon, media, month, news } from '../assets/
 import SearchComponent from '../components/SearchComponent'
 import colors from '../constants/Colors'
 import { DrawerActions, useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
 
 const contentFlatlist = [
     {
@@ -40,14 +41,15 @@ const contentFlatlist = [
 
 const HomeScreen = () => {
     const navigation = useNavigation()
+    const dispatch = useDispatch()
     return (
         <View >
             <View>
                 <HeaderComponent title="Discover" icon={drawericon}
                     onPress={() => navigation.toggleDrawer()}
-                    // containerStyle={{ height: HEIGHT * 0.1 }}
+                    containerStyle={{ height: HEIGHT * 0.2 }}
                     onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-             /*        iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} */ />
+                    iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} />
                 <SearchComponent
                     containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.12, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite}
                     placeholderTextColor={colors.white}

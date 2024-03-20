@@ -1,121 +1,192 @@
-import { View, Text, ScrollView, FlatList, Pressable, Image } from 'react-native'
-import React, { useState } from 'react'
-import HeaderComponent from '../components/HeaderComponent'
-import colors from '../constants/Colors'
-import { useNavigation } from '@react-navigation/native'
-import { backarrow, email, location, mobile, phone } from '../assets/images'
-import { HEIGHT, WIDTH } from '../constants/Dimension'
-import TextInputComponent from '../components/TextInputComponent'
-import ButtonComponent from '../components/ButtonComponent'
-import StripComponent from '../components/StripComponent'
+import React, { useRef, useState } from 'react';
+import { View, Text, FlatList, Pressable, Image, Animated, Easing } from 'react-native';
+import { arabic, downArrow, drawerlogo, upArrow } from '../assets/images';
+import colors from '../constants/Colors';
+import { HEIGHT, WIDTH } from '../constants/Dimension';
+import { useNavigation } from '@react-navigation/native';
 
-
-const contactFlatlist = [
-    {
-        id: 1,
-        icon: phone,
-        type: 'Phone',
-        text: '992345-9669'
-    },
+const drawerFlatlist = [
     {
         id: 2,
-        icon: mobile,
-        type: 'Mobile',
-        text: "9278724593"
+        label: "News",
+        path: 'LatestNewsScreen'
     },
     {
         id: 3,
-        icon: location,
-        type: 'Location',
-        text: "Doha,Qatar"
+        label: "Media Gallery",
+        path: 'MediaScreen'
     },
     {
         id: 4,
-        icon: email,
-        type: 'Email',
-        text: "qoa@olympics.com"
+        label: "About Us",
+        upArrow: upArrow,
+        downArrow: downArrow,
+        subList: [
+            {
+                id: 1,
+                sublabel: 'About QOA',
+                path: 'AboutusScreen',
+                apiKey: "about_us",
+                screenName: "About Us"
+            },
+            {
+                id: 2,
+                sublabel: "President's Message",
+                apiKey: "president_message",
+                screenName: "President's Message"
+            },
+            {
+                id: 3,
+                sublabel: "Executive Director's Message",
+                apiKey: "executive_directors_message",
+                screenName: "Executive Director's Message"
+            },
+            {
+                id: 4,
+                sublabel: "Board Members",
+                apiKey: "board_members",
+                screenName: "Board Members"
+            },
+            {
+                id: 5,
+                sublabel: "Advisory Committee",
+                apiKey: "advisory_committee",
+                screenName: "Advisory Committee"
+            },
+            {
+                id: 6,
+                sublabel: "Our Partners",
+                apiKey: "partners",
+                screenName: "Our Partners"
+            }
+        ]
+    },
+    {
+        id: 6,
+        label: "Contact Us",
+        path: 'ContactUsScreen'
+    },
+    {
+        id: 7,
+        label: "Help",
+        path: 'HelpScreen'
     }
-]
+];
 
-const ContactUsScreen = () => {
-    const navigation = useNavigation()
-    const [formData, setFormData] = useState({ firstname: '', lastname: '', email: '', phonenumber: "", message: '' })
+const DrawerScreen = () => {
+    const navigation = useNavigation();
+    const [expanded, setExpanded] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState('English');
+    const animatedValue = useRef(new Animated.Value(0)).current;
 
-    const formFields = [
-        { label: 'First name', stateKey: 'firstname', component: <TextInputComponent placeholder="First Name" /> },
-        { label: 'Last name', stateKey: 'lastname', component: <TextInputComponent placeholder="Last Name" /> },
-        { label: 'Email', stateKey: 'email', component: <TextInputComponent placeholder="Email" /> },
-        { label: 'Phone Number', stateKey: 'phonenumber', component: <TextInputComponent placeholder="Phone Number" /> },
-        { label: 'Message', stateKey: 'message', component: <TextInputComponent placeholder="Message" /> }
-    ]
+    const selectLanguage = (language) => {
+        setSelectedLanguage(language);
+        console.log('Selected language:', language);
+    };
 
-    const coloredViews = [
-        { backgroundColor: colors.yellow, width: WIDTH * 0.1 },
-        { backgroundColor: colors.darkred, width: WIDTH * 0.15 },
-        { backgroundColor: colors.skyblue, width: WIDTH * 0.17 }
-    ];
+    const toggleDrawer = () => {
+        // Toggle the drawer state
+        setExpanded(!expanded);
 
-    const renderFormFields = () => {
-        return formFields.map((field, index) => (
-            <View key={index} style={{ marginBottom: HEIGHT * 0.02 }}>
-                <Text>{field.label}</Text>
-                {field.component}
-            </View>
-        ))
-    }
+        // Animate the drawer
+        Animated.timing(animatedValue, {
+            toValue: expanded ? 0 : 1,
+            duration: 300, // Animation duration
+            easing: Easing.linear, // Easing function
+            useNativeDriver: false // Make sure to set this to false for layout animations
+        }).start();
+    };
+
+    const animatedDrawerStyle = {
+        height: animatedValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0, drawerFlatlist.filter(item => item.label === 'About Us' && expanded).length * 50] // Adjust height as needed
+        })
+    };
 
     return (
-        <View style={{ backgroundColor: colors.purewhite, flex: 1 }}>
-            <HeaderComponent
-                title="Contact Us"
-                headerStyle={{ height: HEIGHT * 0.15 }}
-                containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.04, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
-                onPress={() => navigation.goBack()}
-                icon={backarrow} />
-            <ScrollView style={{}}>
-                <View style={{ backgroundColor: colors.lightwhite, height: HEIGHT * 0.18 }}>
-                    <View style={{ marginHorizontal: WIDTH * 0.05, margin: 20 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: colors.black }}>Get in touch.Let's talk about your ideas and feedback!</Text>
-                        <StripComponent coloredViews={coloredViews} stripStyle={{ marginTop: HEIGHT * 0.02 }} />
-                    </View>
-                </View>
-
-                <View style={{ backgroundColor: colors.white, marginTop: HEIGHT * 0.13, position: 'absolute', width: WIDTH * 0.9, marginHorizontal: WIDTH * 0.05, padding: HEIGHT * 0.02, borderWidth: 0.5, borderRadius: WIDTH * 0.01, borderColor: colors.grey }}>
-                    <Text style={{ fontSize: 20, fontWeight: '500', color: colors.darkred, marginTop: HEIGHT * 0.01 }}>Send Us A Message</Text>
-                    <Text style={{ fontSize: 15, color: colors.black, marginTop: HEIGHT * 0.01 }}>Leave your information below and we will get back to you as soon as possible.</Text>
-                    <View style={{ marginTop: HEIGHT * 0.02 }}>
-                        {renderFormFields()}
-                    </View>
-                    <ButtonComponent
-                        label="Send Message"
-                        containerStyle={{ width: WIDTH * 0.82, height: HEIGHT * 0.06 }}
-                    />
-                    <StripComponent />
-                </View >
-                <View style={{ marginHorizontal: WIDTH * 0.05, position: "absolute", top: HEIGHT * 0.85 }}>
-                    <FlatList
-                        data={contactFlatlist}
-                        scrollEnabled={false}
-                        keyExtractor={(item) => item.id.toString()}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <Pressable style={{ borderWidth: 0, flexDirection: 'row', alignItems: 'center' }}>
-                                    <View style={{ borderWidth: 1, padding: HEIGHT * 0.01, borderRadius: WIDTH * 0.02 }}>
-                                        <Image source={item.icon} resizeMode='contain' style={{ width: WIDTH * 0.04, height: HEIGHT * 0.02 }} />
-                                    </View>
-                                    <View>
-                                        <Text style={{ fontSize: 16, color: colors.black }}>{item.type}</Text>
-                                        <Text style={{ fontSize: 16, color: colors.black }}>{item.text}</Text>
-                                    </View>
+        <View style={{ backgroundColor: colors.lightwhite, flex: 1 }}>
+            <View style={{ margin: HEIGHT * 0.05 }}>
+                <Image source={drawerlogo} style={{ width: WIDTH * 0.41, height: HEIGHT * 0.101 }} resizeMode='contain' />
+                <FlatList
+                    data={drawerFlatlist}
+                    contentContainerStyle={{ marginTop: HEIGHT * 0.02 }}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => {
+                        return (
+                            <>
+                                <Pressable
+                                    style={{ marginTop: HEIGHT * 0.03, flexDirection: 'row', alignItems: "center" }}
+                                    onPress={() => {
+                                        if (item.label === 'About Us') {
+                                            toggleDrawer();
+                                        } else if (item.path) {
+                                            navigation.navigate(item.path);
+                                        }
+                                    }}
+                                >
+                                    <Text style={{ fontSize: 17, color: colors.black, fontWeight: "500" }}>{item.label}</Text>
+                                    {item.label === 'About Us' && (
+                                        <>
+                                            {expanded ? <Image source={item.upArrow} style={{ marginLeft: WIDTH * 0.02 }} /> : <Image source={item.downArrow} style={{ marginLeft: WIDTH * 0.02 }} />}
+                                        </>
+                                    )}
                                 </Pressable>
-                            )
-                        }}
-                    />
+                                {item.label === 'About Us' && expanded && (
+                                    <View style={{ margin: WIDTH * 0.01 }}>
+
+                                        {item.subList.map((subItem, index) => (
+                                            <Pressable key={index} onPress={() => {
+                                                if (subItem.screenName === 'Our Partners') {
+                                                    navigation.navigate('PartnerScreen');
+                                                } else {
+                                                    navigation.navigate('AboutusScreen', {
+                                                        apidata: subItem?.apiKey,
+                                                        screenTitle: subItem?.screenName
+                                                    });
+                                                }
+                                            }}>
+                                                <Text style={{ fontSize: 14, marginTop: HEIGHT * 0.02, marginLeft: WIDTH * 0.03, color: colors.black }}>{subItem.sublabel}</Text>
+                                            </Pressable>
+                                        ))}
+                                    </View>
+                                )}
+                            </>
+                        );
+                    }}
+                />
+                <Text style={{ fontSize: 14, color: colors.black, marginTop: HEIGHT * 0.05 }}>Language</Text>
+                <View style={{ borderWidth: 0, width: WIDTH * 0.45, flexDirection: 'row', borderRadius: WIDTH * 0.015, backgroundColor: colors.lightgrey, marginTop: HEIGHT * 0.02 }}>
+                    <Pressable
+                        onPress={() => selectLanguage('English')}
+                        style={{
+                            padding: HEIGHT * 0.009,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: WIDTH * 0.01,
+                            margin: HEIGHT * 0.006,
+                            width: WIDTH * 0.21,
+                            backgroundColor: selectedLanguage === 'English' ? colors.purewhite : colors.lightgrey
+                        }}>
+                        <Text style={{ color: selectedLanguage === 'English' ? colors.red : colors.black }}>English</Text>
+                    </Pressable>
+                    <Pressable
+                        onPress={() => selectLanguage('Arabic')}
+                        style={{
+                            padding: HEIGHT * 0.009,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: WIDTH * 0.01,
+                            margin: HEIGHT * 0.006,
+                            width: WIDTH * 0.19,
+                            backgroundColor: selectedLanguage === 'Arabic' ? colors.purewhite : colors.lightgrey
+                        }}>
+                        <Image source={arabic} resizeMode='contain' tintColor={selectedLanguage === 'Arabic' ? colors.red : colors.black} />
+                    </Pressable>
                 </View>
+            </View>
+        </View>
+    );
+};
 
-            </ScrollView >
-        </View >
-    )
-}
-
-export default ContactUsScreen
+export default DrawerScreen;

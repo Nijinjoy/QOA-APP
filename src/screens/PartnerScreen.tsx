@@ -59,7 +59,8 @@ const PartnerScreen = (props) => {
     const handleCategoryPress = (category) => {
         setActiveCategory(category);
     };
-    // Hubspot@197230#
+
+
     return (
         <View style={{ flex: 1 }}>
             <HeaderComponent

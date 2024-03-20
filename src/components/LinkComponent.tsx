@@ -6,12 +6,13 @@ import colors from '../constants/Colors'
 import StripComponent from './StripComponent'
 import { useNavigation } from '@react-navigation/native'
 
+
 const linkFlatlist = [
     {
         id: 1,
         linkName: "President's Message",
         uparrow: linkarrow,
-        path: ""
+        path: "President's Message"
     },
     {
         id: 2,
@@ -39,6 +40,7 @@ const linkFlatlist = [
     }
 ]
 
+
 const LinkComponent = () => {
     const navigation = useNavigation()
 
@@ -53,7 +55,6 @@ const LinkComponent = () => {
             <Text style={{ fontSize: 17, color: colors.darkred, fontWeight: '500' }}>Related Links</Text>
             <FlatList
                 data={linkFlatlist}
-                contentContainerStyle={{ marginTop: HEIGHT * 0.0 }}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => {
                     return (

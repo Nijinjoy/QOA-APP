@@ -44,7 +44,6 @@ const Drawers = () => {
 
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="HelpScreen" component={HelpScreen} />
-            {/* <Drawer.Screen name='AboutusScreen' component={AboutusScreen} /> */}
         </Drawer.Navigator>
     );
 };
@@ -71,6 +70,11 @@ const Routes = () => {
                 <Stack.Screen name='AboutusScreen' component={AboutusScreen} />
                 <Stack.Screen name='PartnerScreen' component={PartnerScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
+                {/* <Stack.Screen
+                    name='HomeScreen'
+                    component={HomeScreen}
+                    options={{ transitionSpec: { open: customTransition, close: customTransition } }}
+                /> */}
             </Stack.Navigator>
         </NavigationContainer>
     )
