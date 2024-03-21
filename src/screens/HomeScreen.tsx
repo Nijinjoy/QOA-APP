@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, FlatList, Image, Pressable } from 'react-nati
 import React from 'react'
 import HeaderComponent from '../components/HeaderComponent'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
-import { allprograms, appicon, drawericon, media, month, news } from '../assets/images'
+import { allprograms, appicon, bell, drawericon, media, month, news } from '../assets/images'
 import SearchComponent from '../components/SearchComponent'
 import colors from '../constants/Colors'
 import { DrawerActions, useNavigation } from '@react-navigation/native'
@@ -41,21 +41,24 @@ const contentFlatlist = [
 
 const HomeScreen = () => {
     const navigation = useNavigation()
-    const dispatch = useDispatch()
     return (
         <View >
             <View>
-                <HeaderComponent title="Discover" icon={drawericon}
+                <HeaderComponent
+                    headerTitle="Discover"
+                    icon={drawericon}
                     onPress={() => navigation.toggleDrawer()}
-                    containerStyle={{ height: HEIGHT * 0.2 }}
+                    containerStyle={{ height: HEIGHT * 0.22 }}
+                    rightIcon={bell}
+                    onNavigate={() => navigation.navigate("NotificationScreen")}
                     onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                     iconStyle={{ width: WIDTH * 0.087, height: HEIGHT * 0.033 }} />
                 <SearchComponent
-                    containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.12, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite}
+                    containerStyle={{ position: 'absolute', width: WIDTH * 0.89, top: HEIGHT * 0.14, borderRadius: WIDTH * 0.02, backgroundColor: `${colors.shadowcolor}25`, borderColor: colors.grey }} tintColor={colors.purewhite}
                     placeholderTextColor={colors.white}
                 />
             </View>
-            <View>
+            <View style={{ backgroundColor: colors.purewhite }}>
                 <FlatList
                     data={contentFlatlist}
                     scrollEnabled={false}

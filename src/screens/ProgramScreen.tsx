@@ -68,12 +68,14 @@ const ProgramScreen = () => {
         }
     };
 
+
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <HeaderComponent
-                title="Programs"
-                headerStyle={{ height: HEIGHT * 0.14 }}
-                containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.05, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
+                headerTitle="Programs"
+                containerStyle={{ height: HEIGHT * 0.14 }}
+                iconBackground={`${colors.lightwhite}25`}
+                // containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.05, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
                 onPress={() => navigation.goBack()}
                 icon={backarrow} />
             <ScrollView style={{ paddingBottom: HEIGHT * 0.1 }}>

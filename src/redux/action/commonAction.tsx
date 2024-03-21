@@ -9,5 +9,3 @@ export const storeLanguage = (language) => {
         })
     }
 }
-
-// Hubspot@197230#

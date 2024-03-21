@@ -12,9 +12,9 @@ const HigherStudyScreen = () => {
     return (
         <View style={{ backgroundColor: '#FAFAFA' }}>
             <HeaderComponent
-                title="Higher Studies"
-                headerStyle={{ height: HEIGHT * 0.15 }}
-                containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.05, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
+                headerTitle="Higher Studies"
+                containerStyle={{ height: HEIGHT * 0.15 }}
+                // containerStyle={{ width: WIDTH * 0.1, borderWidth: 0, height: HEIGHT * 0.05, marginHorizontal: WIDTH * 0.04, backgroundColor: `${colors.white}25` }}
                 onPress={() => navigation.goBack()}
                 icon={backarrow} />
             <Image source={bookshelf} style={{ width: WIDTH, height: HEIGHT * 0.32, }} resizeMode='cover' />

@@ -1,41 +1,29 @@
 import { View, Text, Pressable, Image, SafeAreaView, ImageBackground } from 'react-native'
 import React from 'react'
-import { backarrow, drawericon, headerintersection } from '../assets/images'
+import { backarrow, bell, drawericon, headerintersection, notification } from '../assets/images'
 import colors from '../constants/Colors'
 import { HEIGHT, WIDTH } from '../constants/Dimension'
 
 const HeaderComponent = (props) => {
-    const { title = "Label", icon, onPress, iconStyle = { backgroundColor: colors.darkViolet, width: WIDTH * 0.07, height: HEIGHT * 0.03, borderRadius: WIDTH * 0.02 }, titleStyle = { color: colors.white }, containerStyle = { width: WIDTH * 0.15, height: HEIGHT * 0.06 }, headerStyle = {
-        height: HEIGHT
-            * 0.22
-    } } = props;
-
-
+    const { title = "Label", onPress, icon, rightIconStyle, rightIcon, onNavigate, headerTitle, containerStyle, iconBackground } = props
     return (
-        <ImageBackground source={headerintersection} style={{ backgroundColor: colors.skyblue, borderBottomWidth: 4, borderColor: colors.grey, ...headerStyle }}>
-            <SafeAreaView style={{ flexDirection: 'row', marginHorizontal: WIDTH * 0.05, marginTop: HEIGHT * 0.06 }}>
-                <Pressable onPress={onPress} style={{ flex: 0.2 }}>
-                    <Image source={icon} />
+        <ImageBackground source={headerintersection} style={{ backgroundColor: colors.skyblue, borderBottomWidth: 4, borderColor: colors.grey, ...containerStyle }}>
+            <View style={{ flexDirection: "row", alignItems: 'center', marginTop: HEIGHT * 0.06, marginHorizontal: WIDTH * 0.05, justifyContent: 'space-between' }}>
+                <Pressable onPress={onPress}>
+                    <View style={{ width: WIDTH * 0.09, height: WIDTH * 0.09, alignItems: "center", justifyContent: "center", borderRadius: WIDTH * 0.02, backgroundColor: iconBackground }}>
+                        <Image source={icon} style={{ ...rightIconStyle }} resizeMode='contain' />
+                    </View>
                 </Pressable>
-                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 0.6 }}>
-                    <Text style={{ color: colors.purewhite, fontSize: 18 }}>{title}</Text>
+                <View>
+                    <Text style={{ color: colors.purewhite, fontSize: 18 }}>{headerTitle}</Text>
                 </View>
-            </SafeAreaView>
-        </ImageBackground >
+                <Pressable onPress={onNavigate}>
+                    <Image source={rightIcon} style={{ width: WIDTH * 0.08, height: HEIGHT * 0.06 }} resizeMode='contain' tintColor={colors.purewhite} />
+                </Pressable>
+            </View>
+        </ImageBackground>
     )
 }
 
 export default HeaderComponent
 
-{/* <ImageBackground source={headerintersection} style={{ backgroundColor: colors.skyblue, borderBottomWidth: 4, borderColor: colors.grey, ...headerStyle }}>
-<SafeAreaView style={{ flexDirection: 'row', marginHorizontal: WIDTH * 0.05, marginTop: HEIGHT * 0.06 }}>
-    <Pressable style={{ padding: 8, borderRadius: WIDTH * 0.02, ...containerStyle }} onPress={onPress}>
-        <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
-            <Image source={icon} style={{ ...iconStyle }} resizeMode='contain' />
-        </View>
-    </Pressable>
-    <View style={{ flex: 0.8, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ fontSize: 18, color: colors.purewhite, ...titleStyle }}>{title}</Text>
-    </View>
-</SafeAreaView>
-</ImageBackground > */}

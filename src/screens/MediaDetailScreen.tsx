@@ -16,17 +16,11 @@ const MediaDetailScreen = () => {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-
-    // useEffect(() => {
-    //     fetchMediaDetail();
-    // }, [nid, page]);
+    const [imageRows, setImageRows] = useState([]);
 
     useEffect(() => {
         fetchMediaDetail();
     }, []);
-
-
-    console.log("newsDetail==>", mediaDetail);
 
     const fetchMediaDetail = async () => {
         try {
@@ -35,6 +29,7 @@ const MediaDetailScreen = () => {
             if (data && data.status && data.data) {
                 const { title, description, image_url, date, nid } = data.data;
                 setMediaDetail({ title, description, image_url, date, nid });
+                organizeImagesIntoRows(image_url);
             }
         } catch (error) {
             console.error('Error fetching media detail:', error);
@@ -49,6 +44,7 @@ const MediaDetailScreen = () => {
         }
     };
 
+
     const getRandomSize = () => {
         const screenWidth = Dimensions.get('window').width;
         const screenHeight = Dimensions.get('window').height;
@@ -61,11 +57,12 @@ const MediaDetailScreen = () => {
         return { width, height };
     };
 
+
     return (
         <View style={{ flex: 1 }}>
             <CarouselHeaderComponent
                 backArrow={backarrow}
-                backgroundImage={mediaDetail?.image_url[0]}
+                // backgroundImage={mediaDetail?.image_url[0]}
                 title={mediaDetail?.title}
                 date={mediaDetail?.date}
                 photos="Photos"
@@ -79,13 +76,12 @@ const MediaDetailScreen = () => {
                     contentContainerStyle={{}}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => {
-                        console.log("data===>", item);
                         const { width, height } = getRandomSize();
                         return (
                             <Pressable style={{ borderRadius: WIDTH * 0.02, marginBottom: HEIGHT * 0.015, margin: 1 }}>
                                 <Image
                                     source={{ uri: item }}
-                                    style={{ width: width, height: width, borderRadius: WIDTH * 0.03 }}
+                                    style={{ width: width, height: height, borderRadius: WIDTH * 0.03 }}
                                     resizeMode="cover"
                                 />
                             </Pressable>
@@ -100,23 +96,3 @@ const MediaDetailScreen = () => {
 }
 
 export default MediaDetailScreen
-
-    // const fetchMediaDetail = async () => {
-    //     try {
-    //         setLoading(true);
-    //         const data = await fetchData('/media-detail', { nid: nid, page: page });
-    //         if (data) {
-    //             if (page === 1) {
-    //                 setMediaDetail(data);
-    //                 setBackgroundImage(data?.data);
-    //             } else {
-    //                 setMediaDetail(prevData => ({ ...prevData, data: [...prevData.data, ...data.data] }));
-    //             }
-    //             setTotalPages(data.totalPages);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error fetching media detail:', error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };

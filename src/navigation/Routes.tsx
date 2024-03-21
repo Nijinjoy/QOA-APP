@@ -26,6 +26,7 @@ import CertificateDetailScreen from '../screens/CertificateDetailScreen';
 import CourseRegistrationScreen from '../screens/CourseRegistrationScreen';
 import AboutusScreen from '../screens/AboutusScreen';
 import PartnerScreen from '../screens/PartnerScreen';
+import NotificationScreen from '../screens/NotificationScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -70,14 +71,11 @@ const Routes = () => {
                 <Stack.Screen name='AboutusScreen' component={AboutusScreen} />
                 <Stack.Screen name='PartnerScreen' component={PartnerScreen} />
                 <Stack.Screen name='HomeScreen' component={Drawers} />
-                {/* <Stack.Screen
-                    name='HomeScreen'
-                    component={HomeScreen}
-                    options={{ transitionSpec: { open: customTransition, close: customTransition } }}
-                /> */}
+                <Stack.Screen name='NotificationScreen' component={NotificationScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
 export default Routes
+// NotificationScreen

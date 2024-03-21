@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, FlatList, Pressable, Image, Animated, Easing } from 'react-native';
+import { View, Text, FlatList, Pressable, Image, Animated, Easing, StyleSheet } from 'react-native';
 import { arabic, downArrow, drawerlogo, upArrow } from '../assets/images';
 import colors from '../constants/Colors';
 import { HEIGHT, WIDTH } from '../constants/Dimension';
@@ -84,7 +84,7 @@ const DrawerScreen = () => {
     };
 
     return (
-        <View style={{ backgroundColor: colors.lightwhite, flex: 1 }}>
+        <View style={{ backgroundColor: colors.lightwhite, flex: 1, /* flexDirection: selectedLanguage === 'Arabic' ? 'row-reverse' : 'row' */ }}>
             <View style={{ margin: HEIGHT * 0.05 }}>
                 <Image source={drawerlogo} style={{ width: WIDTH * 0.41, height: HEIGHT * 0.101 }} resizeMode='contain' />
                 <FlatList
@@ -167,5 +167,15 @@ const DrawerScreen = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.lightwhite,
+        flex: 1,
+    },
+    containerArabic: {
+        flexDirection: 'row-reverse'
+    }
+});
 
 export default DrawerScreen;
